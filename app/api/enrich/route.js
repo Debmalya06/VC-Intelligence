@@ -1,4 +1,4 @@
-import { performFullEnrichment } from '@/lib/gemini';
+import { performFullEnrichment } from '@/lib/EnrichmentByAI';
 import { mockCompanies } from '@/lib/mockData';
 
 export async function POST(request) {

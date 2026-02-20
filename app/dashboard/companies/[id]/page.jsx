@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { mockCompanies } from '@/lib/mockData';
 import { storage } from '@/lib/storage';
-import { ArrowLeft, Star, Download, Zap, CheckCircle2, AlertCircle, ExternalLink, Loader, RefreshCw, X, Plus, List, Check } from 'lucide-react';
+import { ArrowLeft, Download, Zap, CheckCircle2, AlertCircle, ExternalLink, Loader, RefreshCw, X, Plus, List, Check } from 'lucide-react';
 
 export default function CompanyProfilePage() {
   const params = useParams();
@@ -271,7 +271,7 @@ export default function CompanyProfilePage() {
           </div>
         </div>
         <div className="flex gap-2">
-          {/* Star Button with List Dropdown */}
+          {/* List Button with Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setShowListDropdown(!showListDropdown)}
@@ -282,7 +282,7 @@ export default function CompanyProfilePage() {
               }`}
               title={companyLists.length > 0 ? `In ${companyLists.length} list(s)` : 'Add to list'}
             >
-              <Star size={20} fill={companyLists.length > 0 ? 'currentColor' : 'none'} />
+              <List size={20} />
             </button>
             
             {/* Dropdown */}
