@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Building2, ListTodo, Star, Settings, Search, Menu } from 'lucide-react';
+import { Building2, ListTodo, Star, Settings, Menu, GitCompare } from 'lucide-react';
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
@@ -26,6 +26,7 @@ export default function DashboardLayout({ children }) {
   const navItems = [
     { name: 'Companies', href: '/dashboard/companies', icon: Building2 },
     { name: 'Lists', href: '/dashboard/lists', icon: ListTodo },
+    { name: 'Compare', href: '/dashboard/compare', icon: GitCompare },
     { name: 'Saved', href: '/dashboard/saved', icon: Star },
   ];
 

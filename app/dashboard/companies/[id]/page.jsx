@@ -459,12 +459,12 @@ export default function CompanyProfilePage() {
 
                 {/* AI Success Banner */}
                 {enrichmentData.source === 'groq-ai-pipeline' && (
-                  <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg">
+                  <div className="p-4 bg-emerald-900/20 border border-emerald-700 rounded-lg">
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="text-green-600 dark:text-green-400 mt-0.5 shrink-0" size={20} />
+                      <CheckCircle2 className="text-emerald-400 mt-0.5 shrink-0" size={20} />
                       <div>
-                        <p className="font-medium text-green-800 dark:text-green-300">AI Analysis Complete</p>
-                        <p className="text-sm text-green-700 dark:text-green-400 mt-1">
+                        <p className="font-medium text-emerald-300">AI Analysis Complete</p>
+                        <p className="text-sm text-emerald-400 mt-1">
                           Data enriched using AI based on live website analysis.
                         </p>
                       </div>
@@ -485,7 +485,7 @@ export default function CompanyProfilePage() {
                     <ul className="space-y-2">
                       {enrichmentData.whatTheyDo.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-foreground">
-                          <CheckCircle2 size={18} className="text-green-600 mt-1 flex-shrink-0" />
+                          <CheckCircle2 size={18} className="text-emerald-400 mt-1 flex-shrink-0" />
                           {item}
                         </li>
                       ))}
@@ -514,9 +514,9 @@ export default function CompanyProfilePage() {
                       <h3 className="font-semibold text-foreground">Investment Signals</h3>
                       {enrichmentData.signalStrength && (
                         <span className={`px-3 py-1 text-xs font-medium rounded-full ${
-                          enrichmentData.signalStrength === 'Strong' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300' :
-                          enrichmentData.signalStrength === 'Moderate' ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300' :
-                          'bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300'
+                          enrichmentData.signalStrength === 'Strong' ? 'bg-emerald-900/30 text-emerald-400' :
+                          enrichmentData.signalStrength === 'Moderate' ? 'bg-amber-900/30 text-amber-400' :
+                          'bg-gray-800 text-gray-400'
                         }`}>
                           {enrichmentData.signalStrength} Signals
                         </span>
@@ -526,9 +526,9 @@ export default function CompanyProfilePage() {
                       {enrichmentData.signals.map((signal, idx) => (
                         <div key={idx} className="flex items-start gap-2 p-2 rounded-lg bg-secondary/50">
                           {signal.detected ? (
-                            <CheckCircle2 size={18} className="text-green-600 mt-0.5 shrink-0" />
+                            <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 shrink-0" />
                           ) : (
-                            <AlertCircle size={18} className="text-gray-400 mt-0.5 shrink-0" />
+                            <AlertCircle size={18} className="text-gray-500 mt-0.5 shrink-0" />
                           )}
                           <div>
                             <span className="text-sm font-medium text-foreground">{signal.label}</span>
@@ -554,16 +554,16 @@ export default function CompanyProfilePage() {
                       <h3 className="font-semibold text-foreground">Investment Score</h3>
                       <div className="flex items-center gap-3">
                         <span className={`text-3xl font-bold ${
-                          enrichmentData.score >= 70 ? 'text-green-600' :
-                          enrichmentData.score >= 50 ? 'text-amber-600' : 'text-red-600'
+                          enrichmentData.score >= 70 ? 'text-emerald-400' :
+                          enrichmentData.score >= 50 ? 'text-amber-500' : 'text-red-500'
                         }`}>
                           {enrichmentData.score}
                         </span>
                         <span className={`px-3 py-1 text-lg font-bold rounded ${
-                          enrichmentData.grade === 'A' ? 'bg-green-100 text-green-700' :
-                          enrichmentData.grade === 'B' ? 'bg-blue-100 text-blue-700' :
-                          enrichmentData.grade === 'C' ? 'bg-amber-100 text-amber-700' :
-                          'bg-red-100 text-red-700'
+                          enrichmentData.grade === 'A' ? 'bg-emerald-900/30 text-emerald-400' :
+                          enrichmentData.grade === 'B' ? 'bg-teal-900/30 text-teal-400' :
+                          enrichmentData.grade === 'C' ? 'bg-amber-900/30 text-amber-400' :
+                          'bg-red-900/30 text-red-400'
                         }`}>
                           {enrichmentData.grade}
                         </span>
@@ -571,10 +571,10 @@ export default function CompanyProfilePage() {
                     </div>
                     {enrichmentData.recommendation && (
                       <span className={`inline-block px-4 py-1 rounded-full text-sm font-medium ${
-                        enrichmentData.recommendation === 'Strong Buy' ? 'bg-green-600 text-white' :
-                        enrichmentData.recommendation === 'Buy' ? 'bg-green-100 text-green-700' :
-                        enrichmentData.recommendation === 'Hold' ? 'bg-amber-100 text-amber-700' :
-                        'bg-red-100 text-red-700'
+                        enrichmentData.recommendation === 'Strong Buy' ? 'bg-emerald-600 text-white' :
+                        enrichmentData.recommendation === 'Buy' ? 'bg-emerald-900/30 text-emerald-400' :
+                        enrichmentData.recommendation === 'Hold' ? 'bg-amber-900/30 text-amber-400' :
+                        'bg-red-900/30 text-red-400'
                       }`}>
                         {enrichmentData.recommendation}
                       </span>
@@ -677,7 +677,7 @@ export default function CompanyProfilePage() {
                     <h3 className="font-semibold text-foreground mb-3">Tech Stack</h3>
                     <div className="flex flex-wrap gap-2">
                       {enrichmentData.techStack.map((tech, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm rounded-full">
+                        <span key={idx} className="px-3 py-1 bg-teal-900/30 text-teal-400 text-sm rounded-full">
                           {tech}
                         </span>
                       ))}
@@ -789,8 +789,8 @@ export default function CompanyProfilePage() {
                 <span
                   className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
                     company.enriched
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-blue-100 text-blue-800'
+                      ? 'bg-emerald-900/30 text-emerald-400'
+                      : 'bg-gray-800 text-gray-400'
                   }`}
                 >
                   {company.enriched ? 'Enriched' : 'Not enriched'}

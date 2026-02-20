@@ -12,7 +12,9 @@ import {
   BarChart3,
   CheckCircle2,
   Flame,
-  Building2
+  Building2,
+  Play,
+  MonitorPlay
 } from 'lucide-react';
 import { mockCompanies } from '@/lib/mockData';
 import { storage } from '@/lib/storage';
@@ -33,25 +35,25 @@ export default function WelcomePage() {
       icon: Building2,
       label: 'Companies Available',
       value: mockCompanies.length.toString(),
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-emerald-500 to-emerald-600'
     },
     {
       icon: TrendingUp,
       label: 'Saved Companies',
       value: savedCount.toString(),
-      color: 'from-cyan-500 to-cyan-600'
+      color: 'from-teal-500 to-teal-600'
     },
     {
       icon: Target,
       label: 'Custom Lists',
       value: listsCount.toString(),
-      color: 'from-emerald-500 to-emerald-600'
+      color: 'from-green-500 to-green-600'
     },
     {
       icon: Zap,
       label: 'AI Enrichment',
       value: 'Ready',
-      color: 'from-orange-500 to-orange-600'
+      color: 'from-lime-500 to-lime-600'
     }
   ];
 
@@ -79,14 +81,14 @@ export default function WelcomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-blue-50/30 dark:from-background dark:via-background dark:to-blue-950/10 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-emerald-950/20 dark:from-background dark:via-background dark:to-emerald-950/10 overflow-hidden">
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
       </div>
 
       {/* Main content */}
@@ -96,7 +98,7 @@ export default function WelcomePage() {
           <div className="max-w-7xl mx-auto">
             {/* Welcome Badge */}
             <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-950/30 border border-emerald-700 dark:bg-emerald-950/30 dark:border-emerald-800">
                 <Flame className="w-4 h-4 text-orange-500" />
                 <span className="text-sm font-medium text-foreground">Welcome back to VC Intelligence</span>
               </div>
@@ -128,6 +130,78 @@ export default function WelcomePage() {
                 </button>
               </Link>
             </div>
+
+            {/* Demo Video Section */}
+            <div className="max-w-4xl mx-auto">
+              <div className="relative group">
+                {/* Glow effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+                
+                {/* Video container */}
+                <div className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden">
+                  {/* Header */}
+                  <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5">
+                    <div className="flex items-center gap-2">
+                      <MonitorPlay className="w-5 h-5 text-emerald-400" />
+                      <span className="text-sm font-medium text-white">Platform Demo</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                    </div>
+                  </div>
+                  
+                  {/* Video wrapper with 16:9 aspect ratio */}
+                  <div className="relative aspect-video bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+                    {/* Decorative grid background */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
+                    
+                    {/* Demo content preview */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                      {/* Animated play button */}
+                      <div className="relative mb-6">
+                        <div className="absolute inset-0 bg-emerald-500/20 rounded-full animate-ping" />
+                        <div className="relative w-20 h-20 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 cursor-pointer hover:bg-emerald-400 hover:scale-105 transition-all">
+                          <Play className="w-8 h-8 text-white ml-1" fill="white" />
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-xl font-semibold text-white mb-2">Watch Platform Demo</h3>
+                      <p className="text-gray-400 text-center max-w-md">
+                        See how to discover companies, run AI enrichment, and organize your deal pipeline
+                      </p>
+                      
+                      {/* Feature highlights */}
+                      <div className="flex flex-wrap justify-center gap-3 mt-6">
+                        <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
+                          AI Enrichment
+                        </span>
+                        <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
+                          Smart Filters
+                        </span>
+                        <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
+                          Export Data
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Caption */}
+                  <div className="px-4 py-3 border-t border-white/10 bg-white/5">
+                    <div className="flex items-center justify-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-xs text-gray-500">2:45</span>
+                      </div>
+                      <p className="text-sm text-gray-400">
+                        Quick walkthrough of key features
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -140,19 +214,19 @@ export default function WelcomePage() {
                 return (
                   <div
                     key={index}
-                    className={`group relative p-6 rounded-2xl bg-white dark:bg-card border border-border dark:border-border hover:shadow-lg transition-all duration-500 ${
+                    className={`group relative p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-500 ${
                       animateStats ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                     }`}
                     style={{ transitionDelay: `${index * 100}ms` }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent dark:from-white/5 dark:to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                     
                     <div className="relative z-10">
-                      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} p-3 mb-4 group-hover:scale-110 transition-transform`}>
+                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 p-3 mb-4 group-hover:scale-110 transition-transform">
                         <Icon className="w-full h-full text-white" />
                       </div>
-                      <p className="text-sm text-muted-foreground mb-1 uppercase tracking-wider">{stat.label}</p>
-                      <p className="text-4xl font-bold text-foreground">{stat.value}</p>
+                      <p className="text-sm text-gray-400 mb-1 uppercase tracking-wider">{stat.label}</p>
+                      <p className="text-4xl font-bold text-white">{stat.value}</p>
                     </div>
                   </div>
                 );
@@ -179,13 +253,13 @@ export default function WelcomePage() {
                 return (
                   <div
                     key={index}
-                    className="group p-8 rounded-2xl bg-white dark:bg-card border border-border dark:border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300"
+                    className="group p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 p-3 mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                      <Icon className="w-full h-full text-primary dark:text-blue-400 group-hover:text-white" />
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/20 p-3 mb-4 group-hover:bg-emerald-500 transition-colors">
+                      <Icon className="w-full h-full text-emerald-400 group-hover:text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                    <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                    <p className="text-gray-400 leading-relaxed">{feature.description}</p>
                   </div>
                 );
               })}
@@ -194,7 +268,7 @@ export default function WelcomePage() {
         </div>
 
         {/* Quick Actions Section */}
-        <div className="px-4 md:px-6 lg:px-8 py-20 bg-gradient-to-r from-blue-50/50 to-cyan-50/50 dark:from-blue-950/10 dark:to-cyan-950/10 border-y border-border">
+        <div className="px-4 md:px-6 lg:px-8 py-20 bg-gradient-to-r from-emerald-950/10 to-teal-950/10 border-y border-border">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
               Get Started in Minutes
@@ -219,10 +293,10 @@ export default function WelcomePage() {
                 }
               ].map((step, index) => (
                 <div key={index} className="relative">
-                  <div className="absolute -left-4 -top-4 text-6xl font-bold text-primary/10">{step.num}</div>
-                  <div className="relative p-6 rounded-xl bg-white dark:bg-card/50 border border-border">
-                    <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
-                    <p className="text-muted-foreground">{step.desc}</p>
+                  <div className="absolute -left-4 -top-4 text-6xl font-bold text-emerald-500/20">{step.num}</div>
+                  <div className="relative p-6 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 transition-all">
+                    <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+                    <p className="text-gray-400">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -233,14 +307,14 @@ export default function WelcomePage() {
         {/* Footer CTA */}
         <div className="px-4 md:px-6 lg:px-8 py-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to discover your next investment?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-gray-400 mb-8">
               Start exploring our comprehensive company database and enriched insights today
             </p>
             <Link href="/dashboard/companies">
-              <button className="px-10 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 inline-flex items-center gap-2 group">
+              <button className="px-10 py-4 bg-emerald-500 text-white font-semibold rounded-xl hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 inline-flex items-center gap-2 group">
                 <span>Start Exploring</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>

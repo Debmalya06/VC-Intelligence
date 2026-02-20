@@ -1,20 +1,23 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plus, Trash2, Download, X } from 'lucide-react';
+import { Plus, Trash2, Download, X, GitCompare, Check } from 'lucide-react';
 import { mockCompanies } from '@/lib/mockData';
+import { storage } from '@/lib/storage';
 
 export default function ListsPage() {
   const [lists, setLists] = useState([]);
   const [selectedListId, setSelectedListId] = useState(null);
   const [showNewListModal, setShowNewListModal] = useState(false);
   const [newListName, setNewListName] = useState('');
+  const [compareLists, setCompareLists] = useState([]);
 
   useEffect(() => {
     const savedLists = localStorage.getItem('lists');
     if (savedLists) {
       setLists(JSON.parse(savedLists));
     }
+    setCompareLists(storage.getCompareLists());
   }, []);
 
   const saveLists = (newLists) => {
@@ -37,9 +40,20 @@ export default function ListsPage() {
 
   const deleteList = (listId) => {
     saveLists(lists.filter((l) => l.id !== listId));
+    storage.removeFromCompare(listId);
+    setCompareLists(storage.getCompareLists());
     if (selectedListId === listId) {
       setSelectedListId(null);
     }
+  };
+
+  const toggleCompare = (listId) => {
+    if (compareLists.includes(listId)) {
+      storage.removeFromCompare(listId);
+    } else {
+      storage.addToCompare(listId);
+    }
+    setCompareLists(storage.getCompareLists());
   };
 
   const removeCompanyFromList = (listId, companyId) => {
@@ -119,37 +133,65 @@ export default function ListsPage() {
             {lists.length === 0 ? (
               <p className="text-muted-foreground text-sm py-4">No lists yet</p>
             ) : (
-              lists.map((list) => (
-                <div
-                  key={list.id}
-                  onClick={() => setSelectedListId(list.id)}
-                  className={`p-4 rounded-lg border cursor-pointer transition-colors ${
-                    selectedListId === list.id
-                      ? 'bg-primary text-primary-foreground border-primary'
-                      : 'bg-card border-border hover:bg-secondary'
-                  }`}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <h3 className="font-semibold">{list.name}</h3>
-                      <p className={`text-sm ${selectedListId === list.id ? 'opacity-80' : 'text-muted-foreground'}`}>
-                        {list.companies.length} companies
-                      </p>
+              lists.map((list) => {
+                const isInCompare = compareLists.includes(list.id);
+                return (
+                  <div
+                    key={list.id}
+                    onClick={() => setSelectedListId(list.id)}
+                    className={`p-4 rounded-lg border cursor-pointer transition-colors ${
+                      selectedListId === list.id
+                        ? 'bg-primary text-primary-foreground border-primary'
+                        : 'bg-card border-border hover:bg-secondary'
+                    }`}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-semibold">{list.name}</h3>
+                          {isInCompare && (
+                            <span className="px-1.5 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs rounded">
+                              Compare
+                            </span>
+                          )}
+                        </div>
+                        <p className={`text-sm ${selectedListId === list.id ? 'opacity-80' : 'text-muted-foreground'}`}>
+                          {list.companies.length} companies
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleCompare(list.id);
+                          }}
+                          className={`p-1.5 rounded transition-colors ${
+                            isInCompare 
+                              ? 'bg-emerald-500 text-white hover:bg-emerald-600' 
+                              : selectedListId === list.id 
+                                ? 'hover:bg-primary-foreground/20' 
+                                : 'hover:bg-accent'
+                          }`}
+                          title={isInCompare ? 'Remove from compare' : 'Add to compare'}
+                        >
+                          {isInCompare ? <Check size={14} /> : <GitCompare size={14} />}
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            deleteList(list.id);
+                          }}
+                          className={`p-1.5 rounded hover:bg-red-500/20 hover:text-red-400 transition-colors ${
+                            selectedListId === list.id ? 'hover:bg-primary-foreground/20' : ''
+                          }`}
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
                     </div>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        deleteList(list.id);
-                      }}
-                      className={`p-1 rounded hover:bg-accent transition-colors ${
-                        selectedListId === list.id ? 'hover:bg-primary-foreground/20' : ''
-                      }`}
-                    >
-                      <Trash2 size={16} />
-                    </button>
                   </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
         </div>
