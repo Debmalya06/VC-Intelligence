@@ -4,8 +4,9 @@ A modern VC sourcing tool for discovering, enriching, and comparing startup comp
 
 https://github.com/user-attachments/assets/demo-video.mp4
 
-> 🎬 [Watch Demo Video](public/demo-video.mp4) - Run locally to see the full demo
-
+<!-- > 🎬 [Watch Demo Video](public/demo-video.mp4) - Run locally to see the full demo -->
+## dashboard Preview
+![alt text](image.png)
 ## ✨ Features
 
 | Feature | Description |
