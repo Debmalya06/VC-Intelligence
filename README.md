@@ -2,7 +2,9 @@
 
 A modern VC sourcing tool for discovering, enriching, and comparing startup companies. Built with Next.js, Tailwind CSS, and Groq AI.
 
-![Dashboard Preview](public/demo-video.mp4)
+https://github.com/user-attachments/assets/demo-video.mp4
+
+> 🎬 [Watch Demo Video](public/demo-video.mp4) - Run locally to see the full demo
 
 ## ✨ Features
 
