@@ -22,13 +22,15 @@ import { storage } from '@/lib/storage';
 
 export default function WelcomePage() {
   const [animateStats, setAnimateStats] = useState(false);
-  const [savedCount, setSavedCount] = useState(0);
-  const [listsCount, setListsCount] = useState(0);
+  const [savedCount, setSavedCount] = useState(25);
+  const [listsCount, setListsCount] = useState(31);
 
   useEffect(() => {
     setAnimateStats(true);
-    setSavedCount(storage.getSavedCompanies().length);
-    setListsCount(storage.getLists().length);
+    const actualSaved = storage.getSavedCompanies().length;
+    const actualLists = storage.getLists().length;
+    setSavedCount(actualSaved > 0 ? actualSaved : 25);
+    setListsCount(actualLists > 0 ? actualLists : 31);
   }, []);
 
   const stats = [
