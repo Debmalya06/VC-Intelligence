@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Building2, ListTodo, Star, Settings, Menu, GitCompare } from 'lucide-react';
+import { Building2, ListTodo, Star, Menu, GitCompare } from 'lucide-react';
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
@@ -78,9 +78,7 @@ export default function DashboardLayout({ children }) {
           <h2 className="text-lg font-semibold text-foreground">
             {navItems.find((item) => item.href === pathname)?.name || 'Dashboard'}
           </h2>
-          <div className="flex items-center gap-4">
-            <Settings size={20} className="text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
-          </div>
+          <div className="w-10" /> {/* Spacer for centering */}
         </div>
 
         {/* Content Area */}

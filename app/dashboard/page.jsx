@@ -14,7 +14,8 @@ import {
   Flame,
   Building2,
   Play,
-  MonitorPlay
+  MonitorPlay,
+  GitCompare
 } from 'lucide-react';
 import { mockCompanies } from '@/lib/mockData';
 import { storage } from '@/lib/storage';
@@ -69,9 +70,9 @@ export default function WelcomePage() {
       description: 'Deep dive into company metrics, trends, and growth signals'
     },
     {
-      icon: Users,
-      title: 'Smart Filters',
-      description: 'Filter companies by industry, funding, location, and custom criteria'
+      icon: GitCompare,
+      title: 'Compare Companies',
+      description: 'Side-by-side comparison of companies with AI-powered analysis and scoring'
     },
     {
       icon: CheckCircle2,
@@ -153,38 +154,15 @@ export default function WelcomePage() {
                   </div>
                   
                   {/* Video wrapper with 16:9 aspect ratio */}
-                  <div className="relative aspect-video bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-                    {/* Decorative grid background */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
-                    
-                    {/* Demo content preview */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                      {/* Animated play button */}
-                      <div className="relative mb-6">
-                        <div className="absolute inset-0 bg-emerald-500/20 rounded-full animate-ping" />
-                        <div className="relative w-20 h-20 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 cursor-pointer hover:bg-emerald-400 hover:scale-105 transition-all">
-                          <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-xl font-semibold text-white mb-2">Watch Platform Demo</h3>
-                      <p className="text-gray-400 text-center max-w-md">
-                        See how to discover companies, run AI enrichment, and organize your deal pipeline
-                      </p>
-                      
-                      {/* Feature highlights */}
-                      <div className="flex flex-wrap justify-center gap-3 mt-6">
-                        <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
-                          AI Enrichment
-                        </span>
-                        <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
-                          Smart Filters
-                        </span>
-                        <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
-                          Export Data
-                        </span>
-                      </div>
-                    </div>
+                  <div className="relative aspect-video bg-black overflow-hidden">
+                    <video 
+                      className="w-full h-full object-cover"
+                      src="/demo-video.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
                   </div>
                   
                   {/* Caption */}
